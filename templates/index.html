@@ -91,6 +91,11 @@
             background-color: #6c757d;
             /* Cor opcional diferente para o botão de visualização */
         }
+        .btn.btn-primary{
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
 
         .btn-view:hover {
             background-color: #5a6268;
@@ -120,7 +125,7 @@
             </div>
 
             <button type="submit" class="btn-submit">Salvar Produto</button>
-            <button type="submit" class="btn-submit btn-view" formaction="/produtos">Ver Produtos</button>
+            <button type="submit" class="btn-submit btn-view" formaction="/produtos"><a class="btn btn-primary" href="{{ url_for('produtos') }}">Ver Produtos</a></button>
         </form>
     </div>
 
