@@ -24,6 +24,7 @@ if __name__ == '__main__':
 
 ### 4. DELETE (Remover) ###
 
+### BAIXE ISSO ###
 # python -m venv venv
 # .\venv\Scripts\activate
 
