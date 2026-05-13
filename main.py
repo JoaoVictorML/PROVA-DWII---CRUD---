@@ -15,3 +15,11 @@ if __name__ == '__main__':
 
 
     ### SEU CRUD AQUI ###
+
+### 1. READ (Listar) ###
+
+### 2. CREATE (Adicionar) ###
+
+### 3. UPDATE (Editar) ###
+
+### 4. DELETE (Remover) ###
