@@ -23,3 +23,8 @@ if __name__ == '__main__':
 ### 3. UPDATE (Editar) ###
 
 ### 4. DELETE (Remover) ###
+
+# python -m venv venv
+# .\venv\Scripts\activate
+
+# pip install flask flask-sqlalchemy flask-migrate flask-wtf python-dotenv
