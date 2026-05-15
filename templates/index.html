@@ -1,134 +1,162 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cadastro de Produto</title>
     <style>
-        /* Configurações Gerais */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+      /* Configurações Gerais */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-        body {
-            background-color: #f4f7f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+      body {
+        background-color: #f4f7f6;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
 
-        /* Container do Formulário */
-        .container {
-            background-color: #ffffff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
-        }
+      /* Container do Formulário */
+      .container {
+        background-color: #ffffff;
+        padding: 2rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+      }
 
-        h2 {
-            margin-bottom: 1.5rem;
-            color: #333;
-            text-align: center;
-            font-size: 1.5rem;
-        }
+      h2 {
+        margin-bottom: 1.5rem;
+        color: #333;
+        text-align: center;
+        font-size: 1.5rem;
+      }
 
-        /* Grupos de Input */
-        .input-group {
-            margin-bottom: 1.2rem;
-        }
+      /* Grupos de Input */
+      .input-group {
+        margin-bottom: 1.2rem;
+      }
 
-        .input-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #666;
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
+      .input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: #666;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
 
-        .input-group input {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s;
-        }
+      .input-group input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+        outline: none;
+        transition: border-color 0.3s;
+      }
 
-        .input-group input:focus {
-            border-color: #4a90e2;
-        }
+      .input-group input:focus {
+        border-color: #4a90e2;
+      }
 
-        /* Botão de Envio */
-        .btn-submit {
-            width: 100%;
-            padding: 1rem;
-            background-color: #4a90e2;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+      /* Botão de Envio */
+      .btn-submit {
+        width: 100%;
+        padding: 1rem;
+        background-color: #4a90e2;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
 
-        .btn-submit:hover {
-            background-color: #357abd;
-        }
+      .btn-submit:hover {
+        background-color: #357abd;
+      }
 
-        /* Espaçamento entre os botões */
-        .btn-view {
-            margin-top: 10px;
-            /* Ajuste o valor conforme desejar */
-            background-color: #6c757d;
-            /* Cor opcional diferente para o botão de visualização */
-        }
-        .btn.btn-primary{
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-        }
+      /* Espaçamento entre os botões */
+      .btn-view {
+        margin-top: 10px;
+        /* Ajuste o valor conforme desejar */
+        background-color: #6c757d;
+        /* Cor opcional diferente para o botão de visualização */
+      }
+      .btn.btn-primary {
+        text-decoration: none;
+        color: white;
+        font-weight: bold;
+      }
 
-        .btn-view:hover {
-            background-color: #5a6268;
-        }
+      .btn-view:hover {
+        background-color: #5a6268;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-
+  <body>
     <div class="container">
-        <form class="product-form">
-            <h2>Cadastrar Novo Produto</h2>
+      <!-- Procure a linha do form e altere para isso: -->
+      <form
+        class="product-form"
+        action="{{ url_for('adicionar_produto') }}"
+        method="POST"
+      >
+        <h2>Cadastrar Novo Produto</h2>
 
-            <div class="input-group">
-                <label for="codigo">Código do Produto</label>
-                <input type="text" id="codigo" name="codigo" placeholder="Ex: PROD-001" required>
-            </div>
+        <div class="input-group">
+          <label for="codigo">Código do Produto</label>
+          <input
+            type="text"
+            id="codigo"
+            name="codigo"
+            placeholder="Ex: PROD-001"
+            required
+          />
+        </div>
 
-            <div class="input-group">
-                <label for="nome">Nome do Produto</label>
-                <input type="text" id="nome" name="nome" placeholder="Ex: Teclado Mecânico" required>
-            </div>
+        <div class="input-group">
+          <label for="nome">Nome do Produto</label>
+          <input
+            type="text"
+            id="nome"
+            name="nome"
+            placeholder="Ex: Teclado Mecânico"
+            required
+          />
+        </div>
 
-            <div class="input-group">
-                <label for="preco">Preço (R$)</label>
-                <input type="number" id="preco" name="preco" step="0.01" placeholder="0,00" required>
-            </div>
+        <div class="input-group">
+          <label for="preco">Preço (R$)</label>
+          <input
+            type="number"
+            id="preco"
+            name="preco"
+            step="0.01"
+            placeholder="0,00"
+            required
+          />
+        </div>
 
-            <button type="submit" class="btn-submit">Salvar Produto</button>
-            <button type="submit" class="btn-submit btn-view" formaction="/produtos"><a class="btn btn-primary" href="{{ url_for('produtos') }}">Ver Produtos</a></button>
-        </form>
+        <button type="submit" class="btn-submit">Salvar Produto</button>
+        <button
+          type="submit"
+          class="btn-submit btn-view"
+          formaction="/produtos"
+        >
+          <a class="btn btn-primary" href="{{ url_for('listar_produtos') }}"
+            >Ver Produtos</a
+          >
+        </button>
+      </form>
     </div>
-
-</body>
-
+  </body>
 </html>
