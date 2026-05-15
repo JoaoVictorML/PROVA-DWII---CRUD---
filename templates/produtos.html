@@ -1,201 +1,204 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-br">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lista de Produtos</title>
 
-    <style>
-      body {
-        background-color: #f4f7f6;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        min-height: 100vh;
-        margin: 0;
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lista de Produtos</title>
 
-      .container-large {
-        background-color: #ffffff;
-        padding: 2rem;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        width: 90%;
-        max-width: 800px;
-      }
+  <style>
+    body {
+      background-color: #f4f7f6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
 
-      .header-actions {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 1.5rem;
-        gap: 10px;
-      }
+    .container-large {
+      background-color: #ffffff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      width: 90%;
+      max-width: 800px;
+    }
 
-      .search-form {
-        display: flex;
-        gap: 5px;
-        flex-grow: 1;
-        margin: 0 20px;
-      }
+    .header-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      gap: 10px;
+    }
 
-      .search-input {
-        padding: 8px 12px;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        width: 100%;
-        font-size: 0.9rem;
-        outline: none;
-      }
+    .search-form {
+      display: flex;
+      gap: 5px;
+      flex-grow: 1;
+      margin: 0 20px;
+    }
 
-      .search-input:focus {
-        border-color: #4a90e2;
-      }
+    .search-input {
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      width: 100%;
+      font-size: 0.9rem;
+      outline: none;
+    }
 
-      .btn-search {
-        padding: 8px 15px;
-        background-color: #4a90e2;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-weight: bold;
-        transition: 0.3s;
-      }
+    .search-input:focus {
+      border-color: #4a90e2;
+    }
 
-      .btn-search:hover {
-        background-color: #357abd;
-      }
+    .btn-search {
+      padding: 8px 15px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-      .product-table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-      }
+    .btn-search:hover {
+      background-color: #357abd;
+    }
 
-      .product-table th,
-      .product-table td {
-        padding: 12px 15px;
-        text-align: left;
-        border-bottom: 1px solid #eee;
-      }
+    .product-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
 
-      .product-table th {
-        background-color: #f8f9fa;
-        color: #333;
-        font-weight: 600;
-        text-transform: uppercase;
-        font-size: 0.8rem;
-      }
+    .product-table th,
+    .product-table td {
+      padding: 12px 15px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
 
-      .btn-edit {
-        padding: 6px 12px;
-        background-color: #f39c12;
-        color: white;
-        border-radius: 4px;
-        text-decoration: none;
-        margin-right: 5px;
-        font-size: 0.8rem;
-      }
+    .product-table th {
+      background-color: #4a90e2;
+      color: white;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
 
-      .btn-delete {
-        padding: 6px 12px;
-        background-color: #e74c3c;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 0.8rem;
-      }
+    .product-table tbody tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
 
-      .btn-secondary {
-        text-decoration: none;
-        padding: 8px 15px;
-        background-color: #2ecc71;
-        color: white;
-        border-radius: 4px;
-        font-size: 0.9rem;
-        font-weight: bold;
-        transition: 0.3s;
-      }
+    .product-table tbody tr:hover {
+      background-color: #f1f3f5;
+    }
 
-      .btn-secondary:hover {
-        background-color: #27ae60;
-      }
-    </style>
-  </head>
+    .btn-edit {
+      padding: 6px 12px;
+      background-color: #f39c12;
+      color: white;
+      border-radius: 4px;
+      text-decoration: none;
+      margin-right: 5px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
 
-  <body>
-    <div class="container-large">
-      <div class="header-actions">
-        <h2 style="margin: 0">Estoque</h2>
+    .btn-edit:hover {
+      background-color: #d68910;
+    }
 
-        <form
-          action="{{ url_for('listar_produtos') }}"
-          method="GET"
-          class="search-form"
-        >
-          <input
-            type="text"
-            name="q"
-            class="search-input"
-            placeholder="Pesquisar produto..."
-            value="{{ request.args.get('q', '') }}"
-          />
-          <button type="submit" class="btn-search">🔍</button>
-        </form>
+    .btn-delete {
+      padding: 6px 12px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
 
-        <a href="{{ url_for('index') }}" class="btn-secondary">Novo</a>
-      </div>
+    .btn-delete:hover {
+      background-color: #c0392b;
+    }
 
-      <table class="product-table">
-        <thead>
-          <tr>
-            <th>Código</th>
-            <th>Nome do Produto</th>
-            <th>Preço</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for produto in produtos %}
-          <tr>
-            <td>{{ produto.codigo }}</td>
-            <td>{{ produto.nome }}</td>
-            <td>R$ {{ "%.2f"|format(produto.preco) }}</td>
-            <td>
-              <div style="display: flex; align-items: center">
-                <a
-                  href="{{ url_for('editar_produto', id=produto.id) }}"
-                  class="btn-edit"
-                  >Editar</a
-                >
+    .btn-secondary {
+      text-decoration: none;
+      padding: 8px 15px;
+      background-color: #2ecc71;
+      color: white;
+      border-radius: 4px;
+      font-size: 0.9rem;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-                <form
-                  action="{{ url_for('deletar_produto', id=produto.id) }}"
-                  method="POST"
-                  onsubmit="return confirm('Deseja realmente excluir?');"
-                >
-                  <button type="submit" class="btn-delete">Remover</button>
-                </form>
-              </div>
-            </td>
-          </tr>
-          {% else %}
-          <tr>
-            <td
-              colspan="4"
-              style="text-align: center; color: #999; padding: 40px"
-            >
-              {% if request.args.get('q') %} Nenhum produto encontrado para "{{
-              request.args.get('q') }}". {% else %} Nenhum produto cadastrado.
-              {% endif %}
-            </td>
-          </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+    .btn-secondary:hover {
+      background-color: #27ae60;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container-large">
+    <div class="header-actions">
+      <h2 style="margin: 0">Estoque</h2>
+
+      <form action="{{ url_for('listar_produtos') }}" method="GET" class="search-form">
+        <input type="text" name="q" class="search-input" placeholder="Pesquisar produto por nome ou código..."
+          value="{{ request.args.get('q', '') }}" />
+        <button type="submit" class="btn-search">🔍</button>
+      </form>
+
+      <a href="{{ url_for('index') }}" class="btn-secondary">Novo</a>
     </div>
-  </body>
+
+    <table class="product-table">
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Nome do Produto</th>
+          <th>Preço</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for produto in produtos %}
+        <tr>
+          <td>{{ produto.codigo }}</td>
+          <td>{{ produto.nome }}</td>
+          <td>R$ {{ "%.2f"|format(produto.preco) }}</td>
+          <td>
+            <div style="display: flex; align-items: center">
+              <a href="{{ url_for('editar_produto', id=produto.id) }}" class="btn-edit">Editar</a>
+
+              <form action="{{ url_for('deletar_produto', id=produto.id) }}" method="POST"
+                onsubmit="return confirm('Deseja realmente excluir este produto?');">
+                <button type="submit" class="btn-delete">Remover</button>
+              </form>
+            </div>
+          </td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="4" style="text-align: center; color: #999; padding: 40px">
+            {% if request.args.get('q') %}
+            Nenhum produto encontrado para "{{ request.args.get('q') }}".
+            {% else %}
+            Nenhum produto cadastrado.
+            {% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</body>
+
 </html>
